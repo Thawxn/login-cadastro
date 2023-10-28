@@ -6,6 +6,19 @@ const app = express();
 const mongoose = require('mongoose');
 const path = require('path');
 const bodyParser = require('body-parser');
+const session = require('express-session');
+const flash = require('connect-flash');
+
+// session
+app.use(session({
+    secret: process.env.SECRET,
+    cookie: { maxAge: 30000000},
+    resave: true,
+    saveUninitialized: true
+}));
+
+// flash
+app.use(flash());
 
 // Connectando ao banco de dados com mongoose
 mongoose.connect(process.env.CONNECTIONSTRING, 

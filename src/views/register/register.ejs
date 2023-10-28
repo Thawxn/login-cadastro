@@ -1,0 +1,16 @@
+<%- include('../includes/head') %>
+
+<div class="conteiner">
+    <h1 class=" text-center">Hello Word</h1>
+
+    <form action="/register" method="post">
+        <input type="email" class="form-control my-3" name="email" placeholder="email@gmail.com">
+        <input type="password" class="form-control my-3" name="password" placeholder="********">
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit">Criar Conta</button>
+            <button class="btn btn-success" type="submit" ><a href="/login">Já tenho uma conta</a></button>
+        </div>
+    </form>
+</div>
+
+<%- include('../includes/footer') %>

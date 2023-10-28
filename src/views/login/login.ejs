@@ -1,0 +1,26 @@
+<%- include('../includes/head') %>
+
+<div class="conteiner">
+    <h1 class=" text-center">Hello Word</h1>
+
+    <form action="/login" method="post">
+        <input type="text" class="form-control my-3" name="email" placeholder="email@gmail.com">
+        <input type="password" class="form-control my-3" name="password" placeholder="********">
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit">Entrar</button>
+            <button class="btn btn-success" type="submit"><a href="/register">Crie um Conta</a></button>
+        </div>
+    </form>
+
+</div>
+
+<div class="message row my-4">
+    <div class="col">
+        <div class="alert alert-danger">
+            hello word
+        </div>
+    </div>
+</div>
+
+
+<%- include('../includes/footer') %>

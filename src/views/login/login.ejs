@@ -1,7 +1,7 @@
 <%- include('../includes/head') %>
 
 <div class="conteiner">
-    <h1 class=" text-center">Hello Word</h1>
+    <h1 class=" text-center text-light my-3">Login</h1>
 
     <form action="/login" method="post">
         <input type="text" class="form-control my-3" name="email" placeholder="email@gmail.com">
@@ -14,13 +14,6 @@
 
 </div>
 
-<div class="message row my-4">
-    <div class="col">
-        <div class="alert alert-danger">
-            hello word
-        </div>
-    </div>
-</div>
-
+<%- include('../includes/message') %>
 
 <%- include('../includes/footer') %>

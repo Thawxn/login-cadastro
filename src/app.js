@@ -9,6 +9,8 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
 
+const { middlewareGlobal } = require('./middleware/middleware');
+
 // session
 app.use(session({
     secret: process.env.SECRET,
@@ -19,6 +21,9 @@ app.use(session({
 
 // flash
 app.use(flash());
+
+// middleware global
+app.use(middlewareGlobal) 
 
 // Connectando ao banco de dados com mongoose
 mongoose.connect(process.env.CONNECTIONSTRING, 

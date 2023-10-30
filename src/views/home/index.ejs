@@ -1,0 +1,27 @@
+<%- include('../includes/head') %>
+
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Olá <%= user.name %>, bem-vindo</span>
+
+      <a class="nav-link navbar-brand mg-auto " href="/logout">Sair</a>
+    </div>
+
+</nav>
+
+
+<div class="conteiner">
+  <h1 class=" text-center text-light my-3">Projeto de Login e de Cadastro</h1>
+
+  <div class="text">
+    Objetivo desse projeto é criar uma API de login e cadastro usando um banco 
+    dados NoSQL (mongoDB), levando em conta que todo projeto necessite de uma 
+    área de login e cadastro criei algo bem simples,
+    mas funcional, usando criptografia na senha.
+    <br> <br>
+    criado por: Thawan Marques
+  </div>
+
+</div>
+
+<%- include('../includes/footer') %>

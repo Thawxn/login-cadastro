@@ -16,19 +16,22 @@ exports.authenticate = async (req, res) => {
                 if(correct) {
                     req.session.user = {
                         id: data._id,
+                        name: data.name,
                         email: data.email
                     }
                     
-                    res.json(req.session.user)
+                    req.session.save(() => res.redirect('/'))
                 } else {
-                    res.json({err: 'Email ou senha incorreta'})
+                    req.flash('err', 'Email ou senha incorreta.')
+                    req.session.save(() => res.redirect('/login'))
                 }
             } else {
-                res.json({err: 'Email ou senha incorreta'})
+                req.flash('err', 'Email ou senha incorreta.')
+                req.session.save(() => res.redirect('/login'))
             }
         })
     } catch (err) {
-        console.err(err)
+        console.log(err)
     }
     
 }

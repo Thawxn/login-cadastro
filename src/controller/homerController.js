@@ -1,3 +1,3 @@
 exports.index = (req, res) => {
-    res.send('Hello Word')
+    res.render('home/index', {user: req.session.user})
 };

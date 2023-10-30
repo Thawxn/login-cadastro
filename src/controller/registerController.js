@@ -1,16 +1,18 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
+// rota GET de cadastro
 exports.index = (req, res) => {
     res.render('register/register')
 }
 
 // rota POST de cadastro
 exports.create = async (req, res) => {
-    const { email, password } = req.body
+    const { name, email, password } = req.body
 
-    if (email == '' || password == '') {
-        res.json({err: 'necessario preencher todos os requesito.'})
+    if (name == '' || email == '' || password == '') {
+        req.flash('err', 'Necessario preencher todos os campos')
+        req.session.save(() => res.redirect('/register'))
     }
 
     const userExist = await User.findOne({ email })
@@ -20,13 +22,15 @@ exports.create = async (req, res) => {
             let salt = bcrypt.genSaltSync(8)
             let hash = bcrypt.hashSync(password, salt)
 
-            await User.create({ email, password: hash })
-            res.json({ok: 'usuario registrado com sucesso'})
+            await User.create({name, email, password: hash })
+            req.flash('success', 'Usuario criado com sucesso.')
+            req.session.save(() => res.redirect('/register'))
         } else {
-            res.json({err: 'usuario já existe'})
+            req.flash('err', 'Usuário já cadastrado.')
+            req.session.save(() => res.redirect('/register'))
         }
     } catch (err) {
-        res.json(err)
+        console.log(err)
     }
 
 }
